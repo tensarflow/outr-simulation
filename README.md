@@ -8,7 +8,7 @@ The packages are doing the following:
 * **outr_gazebo** launches the model in the gazebo environment.
 * **outr_control** launches the model in the gazebo environment where the robot motion can be commanded by the keyboard.
 
-The model is described as URDF under outr_simulation/src/outr_description/urdf, where the outr.xacro file includes the other files.
+The model is described as URDF under `outr-simulation/src/outr_description/urdf`, where the `outr.xacro` file includes the other files.
 
 ## Dependencies
 
@@ -25,22 +25,22 @@ Assumed, you already installed ROS with Gazebo:
 1. Clone this repository to your home directory
 ```
 cd
-git clone this repo outr_simulation
-cd outr_simulation
+git clone https://gitlab.com/outr1/outr-simulation
+cd outr-simulation
 ```
-2. Delete everything within outr_simulation/build/
+2. Delete everything within outr-simulation/build/
 ```
 cd build
 sudo rm -r *
 ```
 3. Build the workspace with catkin
 ```
-cd ~/outr_simulation
+cd ~/outr-simulation
 catkin_make
 ```
 4. Don't forget to source your environment
 ```
-source ~/outr_simulation/devel/setup.bash
+source ~/outr-simulation/devel/setup.bash
 ```
 
 You should now be able to see these packages as ros nodes.
