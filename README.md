@@ -56,6 +56,7 @@ RViz is optional.
 
 ### Use `rostopic pub`
 After launching the model, in a new terminal use the following command to publish a desired velocity to the `cmd_vel` topic (change values accordingly):
+```
 rostopic pub /cmd_vel geometry_msgs/Twist "linear:
   x: 0.0
   y: 0.0
@@ -64,6 +65,7 @@ angular:
   x: 0.0
   y: 0.0
   z: 0.0"
+```
 
 ### Circle Mode:
 After launching the model, in a new terminal use the following command to drive the robot in a circle:
