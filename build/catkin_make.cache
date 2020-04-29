@@ -1,2 +1,0 @@
-outr_control:outr_description:outr_gazebo
--DCATKIN_DEVEL_PREFIX=/home/ensar/outr-simulation/devel -DCMAKE_INSTALL_PREFIX=/home/ensar/outr-simulation/install -G Unix Makefiles

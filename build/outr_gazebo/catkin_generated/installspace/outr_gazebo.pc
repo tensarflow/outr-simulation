@@ -1,8 +1,0 @@
-prefix=/home/ensar/outr-simulation/install
-
-Name: outr_gazebo
-Description: Description of outr_gazebo
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 
