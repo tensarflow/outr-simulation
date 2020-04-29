@@ -1,4 +1,4 @@
-# diff-drive-controller
+# outr-simulation
 
 ## Purpose
 This repository is a complete Catkin Workspace. This workspace has three packages, that simulate the OUTR. With the help of this package, we can develope all software components of the OUTR that require the Robot to exist. Since Gazebo and ROS are used, one can access all properties of the Robot in the simulation, as if it were to the real robot.
@@ -13,13 +13,12 @@ The model is described as URDF under outr_simulation/src/outr_description/urdf, 
 ## Dependencies
 
 - ROS
-	- rospy
-	- roscpp
-	- geometry_msgs
+    - rospy
+    - roscpp
+    - geometry_msgs
 - Gazebo
-
 - This software is tested with:
-	- Ubuntu 18.04, ROS Melodic, Gazebo 9
+    - Ubuntu 18.04, ROS Melodic, Gazebo 9
 ## Install
 Assumed, you already installed ROS with Gazebo:
 
@@ -47,7 +46,7 @@ source ~/outr_simulation/devel/setup.bash
 You should now be able to see these packages as ros nodes.
 
 ## Usage
-Load the Gazebo simulator and rviz in separate terminals using the following commands:
+Launch the Gazebo simulator and rviz in separate terminals using the following commands:
 ```
 roslaunch outr_gazebo outr.launch
 roslaunch outr_description outr_rviz.launch
