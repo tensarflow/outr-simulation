@@ -1,0 +1,2 @@
+outr_control:outr_description:outr_gazebo
+-DCATKIN_DEVEL_PREFIX=/home/ensar/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/ensar/catkin_ws/install -G Unix Makefiles

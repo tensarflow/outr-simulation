@@ -1,0 +1,8 @@
+prefix=/home/ensar/catkin_ws/install
+
+Name: outr_control
+Description: Description of outr_control
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
