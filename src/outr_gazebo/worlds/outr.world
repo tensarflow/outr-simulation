@@ -4,7 +4,7 @@
 
   <world name="default">
 
-		<include>
+    <include>
       <uri>model://ground_plane</uri>
     </include>
 
@@ -13,7 +13,6 @@
       <uri>model://willowgarage</uri>
     </include>
 
-    <!-- Global light source -->
     <include>
       <uri>model://sun</uri>
     </include>
