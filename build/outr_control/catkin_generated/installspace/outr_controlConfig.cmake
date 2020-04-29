@@ -67,14 +67,14 @@ set(outr_control_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("FALSE" STREQUAL "TRUE")
-  set(outr_control_SOURCE_PREFIX /home/ensar/catkin_ws/src/outr_control)
-  set(outr_control_DEVEL_PREFIX /home/ensar/catkin_ws/devel)
+  set(outr_control_SOURCE_PREFIX /home/ensar/outr-simulation/src/outr_control)
+  set(outr_control_DEVEL_PREFIX /home/ensar/outr-simulation/devel)
   set(outr_control_INSTALL_PREFIX "")
   set(outr_control_PREFIX ${outr_control_DEVEL_PREFIX})
 else()
   set(outr_control_SOURCE_PREFIX "")
   set(outr_control_DEVEL_PREFIX "")
-  set(outr_control_INSTALL_PREFIX /home/ensar/catkin_ws/install)
+  set(outr_control_INSTALL_PREFIX /home/ensar/outr-simulation/install)
   set(outr_control_PREFIX ${outr_control_INSTALL_PREFIX})
 endif()
 
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/ensar/catkin_ws/install/lib;/opt/ros/melodic/lib)
+    foreach(path /home/ensar/outr-simulation/install/lib;/home/ensar/outr-simulation/devel/lib;/opt/ros/melodic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

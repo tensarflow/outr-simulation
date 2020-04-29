@@ -1,2 +1,2 @@
 - setup-file:
-    local-name: /home/ensar/catkin_ws/devel/setup.sh
+    local-name: /home/ensar/outr-simulation/devel/setup.sh

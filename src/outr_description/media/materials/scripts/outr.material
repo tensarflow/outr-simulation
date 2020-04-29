@@ -1,0 +1,13 @@
+material WheelMaterial{
+    technique
+    {
+        pass
+        {
+            texture_unit
+            {
+                texture wheel.jpg
+                scale 0.1 1
+            }
+        }   
+    }
+}

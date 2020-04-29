@@ -1,8 +1,8 @@
-# Install script for directory: /home/ensar/catkin_ws/src/outr_description
+# Install script for directory: /home/ensar/outr-simulation/src/outr_description
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/ensar/catkin_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/ensar/outr-simulation/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -38,17 +38,17 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/ensar/catkin_ws/build/outr_description/catkin_generated/installspace/outr_description.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/ensar/outr-simulation/build/outr_description/catkin_generated/installspace/outr_description.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/outr_description/cmake" TYPE FILE FILES
-    "/home/ensar/catkin_ws/build/outr_description/catkin_generated/installspace/outr_descriptionConfig.cmake"
-    "/home/ensar/catkin_ws/build/outr_description/catkin_generated/installspace/outr_descriptionConfig-version.cmake"
+    "/home/ensar/outr-simulation/build/outr_description/catkin_generated/installspace/outr_descriptionConfig.cmake"
+    "/home/ensar/outr-simulation/build/outr_description/catkin_generated/installspace/outr_descriptionConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/outr_description" TYPE FILE FILES "/home/ensar/catkin_ws/src/outr_description/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/outr_description" TYPE FILE FILES "/home/ensar/outr-simulation/src/outr_description/package.xml")
 endif()
 

@@ -1,4 +1,4 @@
-prefix=/home/ensar/catkin_ws/install
+prefix=/home/ensar/outr-simulation/install
 
 Name: outr_description
 Description: Description of outr_description

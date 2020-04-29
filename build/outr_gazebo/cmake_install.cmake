@@ -1,8 +1,8 @@
-# Install script for directory: /home/ensar/catkin_ws/src/outr_gazebo
+# Install script for directory: /home/ensar/outr-simulation/src/outr_gazebo
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/ensar/catkin_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/ensar/outr-simulation/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -38,17 +38,17 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/ensar/catkin_ws/build/outr_gazebo/catkin_generated/installspace/outr_gazebo.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/ensar/outr-simulation/build/outr_gazebo/catkin_generated/installspace/outr_gazebo.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/outr_gazebo/cmake" TYPE FILE FILES
-    "/home/ensar/catkin_ws/build/outr_gazebo/catkin_generated/installspace/outr_gazeboConfig.cmake"
-    "/home/ensar/catkin_ws/build/outr_gazebo/catkin_generated/installspace/outr_gazeboConfig-version.cmake"
+    "/home/ensar/outr-simulation/build/outr_gazebo/catkin_generated/installspace/outr_gazeboConfig.cmake"
+    "/home/ensar/outr-simulation/build/outr_gazebo/catkin_generated/installspace/outr_gazeboConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/outr_gazebo" TYPE FILE FILES "/home/ensar/catkin_ws/src/outr_gazebo/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/outr_gazebo" TYPE FILE FILES "/home/ensar/outr-simulation/src/outr_gazebo/package.xml")
 endif()
 
