@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>outr_description</name>
+  <version>0.0.0</version>
+  <description>The outr_description package</description>
+
+  <maintainer email="te.ozkaya@gmail.com">ensar</maintainer>
+
+  <license>TODO</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <exec_depend>gazebo_ros</exec_depend>
+
+  <export>
+    <gazebo_ros gazebo_media_path="${prefix}"/>
+  </export>
+</package>

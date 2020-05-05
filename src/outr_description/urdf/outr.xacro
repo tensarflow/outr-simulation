@@ -6,26 +6,26 @@
   <xacro:include filename="$(find outr_description)/urdf/outr.gazebo" />
   <xacro:include filename="$(find outr_description)/urdf/materials.xacro" />
   <xacro:include filename="$(find outr_description)/urdf/macros.xacro" />
-
+  <xacro:include filename="$(find outr_description)/urdf/_d435.urdf.xacro"/>
 
   <link name='chassis'>
     <pose>0 0 0 0 0 0</pose>
 
     <inertial>
-      <mass value="10.0"/>
-      <origin xyz="0.15 0 -0.1" rpy=" 0 0 3.14159"/>
-      <inertia ixx="0.5" ixy="0" ixz="0" iyy="1.0" iyz="0" izz="0.5" />
+      <mass value="5.0"/>
+      <origin xyz="0.15 0 -0.15" rpy=" 0 0 3.14159"/>
+      <inertia ixx="100.0" ixy="0" ixz="0" iyy="100.0" iyz="0" izz="100.0" />
     </inertial>
 
     <collision name='collision'>
-      <origin xyz="0.15 0 -0.1" rpy=" 0 0 3.14159"/>
+      <origin xyz="0.15 0 -0.15" rpy=" 0 0 3.14159"/>
       <geometry>
         <mesh filename="package://outr_description/urdf/outr.dae"/>
       </geometry>
     </collision>
 
     <visual name='chassis_visual'>
-      <origin xyz="0.15 0 -0.1" rpy=" 0 0 3.14159"/>
+      <origin xyz="0.15 0 -0.15" rpy=" 0 0 3.14159"/>
       <geometry>
         <mesh filename="package://outr_description/urdf/outr.dae"/>
       </geometry>
@@ -33,7 +33,7 @@
 
 
     <collision name='caster1_collision'>
-      <origin xyz="0.45 0.22 -0.04" rpy=" 0 0 0"/>
+      <origin xyz="0.45 0.22 -0.05" rpy=" 0 0 0"/>
       <geometry>
         <sphere radius="0.05"/>
       </geometry>
@@ -50,14 +50,14 @@
     </collision>
 
     <visual name='caster1_visual'>
-      <origin xyz="0.45 0.22 -0.04" rpy=" 0 0 0"/>
+      <origin xyz="0.45 0.22 -0.05" rpy=" 0 0 0"/>
       <geometry>
         <sphere radius="0.05"/>
       </geometry>
     </visual>
 
     <collision name='caster2_collision'>
-      <origin xyz="0.45 -0.22 -0.04" rpy=" 0 0 0"/>
+      <origin xyz="0.45 -0.22 -0.05" rpy=" 0 0 0"/>
       <geometry>
         <sphere radius="0.05"/>
       </geometry>
@@ -74,14 +74,14 @@
     </collision>
 
     <visual name='caster2_visual'>
-      <origin xyz="0.45 -0.22 -0.04" rpy=" 0 0 0"/>
+      <origin xyz="0.45 -0.22 -0.05" rpy=" 0 0 0"/>
       <geometry>
         <sphere radius="0.05"/>
       </geometry>
     </visual>
 
     <collision name='caster3_collision'>
-      <origin xyz="-0.45 0.22 -0.04" rpy=" 0 0 0"/>
+      <origin xyz="-0.45 0.22 -0.05" rpy=" 0 0 0"/>
       <geometry>
         <sphere radius="0.05"/>
       </geometry>
@@ -98,14 +98,14 @@
     </collision>
 
     <visual name='caster3_visual'>
-      <origin xyz="-0.45 0.22 -0.04" rpy=" 0 0 0"/>
+      <origin xyz="-0.45 0.22 -0.05" rpy=" 0 0 0"/>
       <geometry>
         <sphere radius="0.05"/>
       </geometry>
     </visual>
 
     <collision name='caster4_collision'>
-      <origin xyz="-0.45 -0.22 -0.04" rpy=" 0 0 0"/>
+      <origin xyz="-0.45 -0.22 -0.05" rpy=" 0 0 0"/>
       <geometry>
         <sphere radius="0.05"/>
       </geometry>
@@ -122,7 +122,7 @@
     </collision>
 
     <visual name='caster4_visual'>
-      <origin xyz="-0.45 -0.22 -0.04" rpy=" 0 0 0"/>
+      <origin xyz="-0.45 -0.22 -0.05" rpy=" 0 0 0"/>
       <geometry>
         <sphere radius="0.05"/>
       </geometry>
@@ -138,17 +138,17 @@
         <cylinder radius="0.1" length="0.03"/>
       </geometry>
       <surface>
-        <!-- <friction>
+        <friction>
           <ode>
-            <mu>5</mu>
-            <mu2>5</mu2>
+            <mu>50</mu>
+            <mu2>50</mu2>
             <slip1>0</slip1>
             <slip2>0</slip2>
           </ode>
-        </friction> -->
+        </friction>
         <contact>
           <ode>
-            <min_depth>5</min_depth>
+            <min_depth>10</min_depth>
           </ode>
         </contact>
       </surface>
@@ -174,17 +174,17 @@
         <cylinder radius="0.1" length="0.03"/>
       </geometry>
       <surface>
-        <!-- <friction>
+        <friction>
           <ode>
-            <mu>5</mu>
-            <mu2>5</mu2>
+            <mu>50</mu>
+            <mu2>50</mu2>
             <slip1>0</slip1>
             <slip2>0</slip2>
           </ode>
-        </friction> -->
+        </friction>
         <contact>
           <ode>
-            <min_depth>5</min_depth>
+            <min_depth>10</min_depth>
           </ode>
         </contact>
       </surface>
@@ -210,7 +210,6 @@
     <material>WheelMaterial</material>
   </gazebo>
 
-
   <joint type="continuous" name="left_wheel_hinge">
     <origin xyz="0 0.22 0" rpy="0 0 0"/>
     <child link="left_wheel"/>
@@ -229,7 +228,8 @@
     <joint_properties damping="0.0" friction="0.0"/>
   </joint>
 
-
-
+  <sensor_d435 parent="chassis">
+    <origin xyz="0.63 0 0" rpy="0 0 0"/>
+  </sensor_d435>
 
 </robot>
