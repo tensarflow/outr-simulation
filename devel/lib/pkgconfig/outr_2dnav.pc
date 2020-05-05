@@ -1,0 +1,8 @@
+prefix=/home/ensar/outr-simulation/devel
+
+Name: outr_2dnav
+Description: Description of outr_2dnav
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

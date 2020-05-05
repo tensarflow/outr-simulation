@@ -8,13 +8,15 @@
   <xacro:include filename="$(find outr_description)/urdf/macros.xacro" />
   <xacro:include filename="$(find outr_description)/urdf/_d435.urdf.xacro"/>
 
+  <link name="base_link" />
+
   <link name='chassis'>
     <pose>0 0 0 0 0 0</pose>
 
     <inertial>
-      <mass value="5.0"/>
+      <mass value="10.0"/>
       <origin xyz="0.15 0 -0.15" rpy=" 0 0 3.14159"/>
-      <inertia ixx="100.0" ixy="0" ixz="0" iyy="100.0" iyz="0" izz="100.0" />
+      <inertia ixx="1.0" ixy="0" ixz="0" iyy="1.0" iyz="0" izz="1.0" />
     </inertial>
 
     <collision name='collision'>
@@ -33,7 +35,7 @@
 
 
     <collision name='caster1_collision'>
-      <origin xyz="0.45 0.22 -0.05" rpy=" 0 0 0"/>
+      <origin xyz="0.45 0 -0.05" rpy=" 0 0 0"/>
       <geometry>
         <sphere radius="0.05"/>
       </geometry>
@@ -42,22 +44,22 @@
           <ode>
             <mu>0</mu>
             <mu2>0</mu2>
-            <slip1>5.0</slip1>
-            <slip2>5.0</slip2>
+            <slip1>1.0</slip1>
+            <slip2>1.0</slip2>
           </ode>
         </friction>
       </surface>
     </collision>
 
     <visual name='caster1_visual'>
-      <origin xyz="0.45 0.22 -0.05" rpy=" 0 0 0"/>
+      <origin xyz="0.45 0 -0.05" rpy=" 0 0 0"/>
       <geometry>
         <sphere radius="0.05"/>
       </geometry>
     </visual>
 
     <collision name='caster2_collision'>
-      <origin xyz="0.45 -0.22 -0.05" rpy=" 0 0 0"/>
+      <origin xyz="-0.45 0 -0.05" rpy=" 0 0 0"/>
       <geometry>
         <sphere radius="0.05"/>
       </geometry>
@@ -66,68 +68,19 @@
           <ode>
             <mu>0</mu>
             <mu2>0</mu2>
-            <slip1>5.0</slip1>
-            <slip2>5.0</slip2>
+            <slip1>1.0</slip1>
+            <slip2>1.0</slip2>
           </ode>
         </friction>
       </surface>
     </collision>
 
     <visual name='caster2_visual'>
-      <origin xyz="0.45 -0.22 -0.05" rpy=" 0 0 0"/>
+      <origin xyz="-0.45 0 -0.05" rpy=" 0 0 0"/>
       <geometry>
         <sphere radius="0.05"/>
       </geometry>
     </visual>
-
-    <collision name='caster3_collision'>
-      <origin xyz="-0.45 0.22 -0.05" rpy=" 0 0 0"/>
-      <geometry>
-        <sphere radius="0.05"/>
-      </geometry>
-      <surface>
-        <friction>
-          <ode>
-            <mu>0</mu>
-            <mu2>0</mu2>
-            <slip1>5.0</slip1>
-            <slip2>5.0</slip2>
-          </ode>
-        </friction>
-      </surface>
-    </collision>
-
-    <visual name='caster3_visual'>
-      <origin xyz="-0.45 0.22 -0.05" rpy=" 0 0 0"/>
-      <geometry>
-        <sphere radius="0.05"/>
-      </geometry>
-    </visual>
-
-    <collision name='caster4_collision'>
-      <origin xyz="-0.45 -0.22 -0.05" rpy=" 0 0 0"/>
-      <geometry>
-        <sphere radius="0.05"/>
-      </geometry>
-      <surface>
-        <friction>
-          <ode>
-            <mu>0</mu>
-            <mu2>0</mu2>
-            <slip1>5.0</slip1>
-            <slip2>5.0</slip2>
-          </ode>
-        </friction>
-      </surface>
-    </collision>
-
-    <visual name='caster4_visual'>
-      <origin xyz="-0.45 -0.22 -0.05" rpy=" 0 0 0"/>
-      <geometry>
-        <sphere radius="0.05"/>
-      </geometry>
-    </visual>
-
   </link>
 
 
@@ -137,21 +90,6 @@
       <geometry>
         <cylinder radius="0.1" length="0.03"/>
       </geometry>
-      <surface>
-        <friction>
-          <ode>
-            <mu>50</mu>
-            <mu2>50</mu2>
-            <slip1>0</slip1>
-            <slip2>0</slip2>
-          </ode>
-        </friction>
-        <contact>
-          <ode>
-            <min_depth>10</min_depth>
-          </ode>
-        </contact>
-      </surface>
     </collision>
     <visual name="left_wheel_visual">
       <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
@@ -173,21 +111,6 @@
       <geometry>
         <cylinder radius="0.1" length="0.03"/>
       </geometry>
-      <surface>
-        <friction>
-          <ode>
-            <mu>50</mu>
-            <mu2>50</mu2>
-            <slip1>0</slip1>
-            <slip2>0</slip2>
-          </ode>
-        </friction>
-        <contact>
-          <ode>
-            <min_depth>10</min_depth>
-          </ode>
-        </contact>
-      </surface>
     </collision>
     <visual name="right_wheel_visual">
       <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
@@ -210,8 +133,13 @@
     <material>WheelMaterial</material>
   </gazebo>
 
+  <joint name="base_link_to_chassis" type="fixed">
+    <parent link="base_link"/>
+    <child link="chassis"/>
+  </joint>
+
   <joint type="continuous" name="left_wheel_hinge">
-    <origin xyz="0 0.22 0" rpy="0 0 0"/>
+    <origin xyz="0 0.40 0" rpy="0 0 0"/>
     <child link="left_wheel"/>
     <parent link="chassis"/>
     <axis xyz="0 1 0" rpy="0 0 0"/>
@@ -220,7 +148,7 @@
   </joint>
 
   <joint type="continuous" name="right_wheel_hinge">
-    <origin xyz="0 -0.22 0" rpy="0 0 0"/>
+    <origin xyz="0 -0.40 0" rpy="0 0 0"/>
     <child link="right_wheel"/>
     <parent link="chassis"/>
     <axis xyz="0 1 0" rpy="0 0 0"/>
@@ -228,8 +156,8 @@
     <joint_properties damping="0.0" friction="0.0"/>
   </joint>
 
-  <sensor_d435 parent="chassis">
+  <xacro:sensor_d435 parent="chassis">
     <origin xyz="0.63 0 0" rpy="0 0 0"/>
-  </sensor_d435>
+  </xacro:sensor_d435>
 
 </robot>

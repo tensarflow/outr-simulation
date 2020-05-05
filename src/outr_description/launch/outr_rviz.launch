@@ -1,7 +1,27 @@
 <?xml version="1.0"?>
 <launch>
 
-  <param name="robot_description" command="$(find xacro)/xacro.py '$(find outr_description)/urdf/outr.xacro'"/>
+  <!-- launch gazebo simulation -->
+  <arg name="world" default="empty"/>
+  <arg name="paused" default="false"/>
+  <arg name="use_sim_time" default="true"/>
+  <arg name="gui" default="false"/>
+  <arg name="headless" default="false"/>
+  <arg name="debug" default="false"/>
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find outr_gazebo)/worlds/outr.world"/>
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+    <arg name="gui" value="$(arg gui)"/>
+    <arg name="headless" value="$(arg headless)"/>
+    <arg name="debug" value="$(arg debug)"/>
+  </include>
+
+
+  <param name="robot_description" command="$(find xacro)/xacro '$(find outr_description)/urdf/outr.xacro'"/>
+
+  <node name="outr_spawn" pkg="gazebo_ros" type="spawn_model" output="screen" args="-urdf -param robot_description -model outr" />
 
   <!-- send fake joint values -->
   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
@@ -9,9 +29,40 @@
   </node>
 
   <!-- Combine joint values -->
-  <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher"/>
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
 
   <!-- Show in Rviz   -->
-  <node name="rviz" pkg="rviz" type="rviz"/>
-   
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find outr_description)/launch/outr.rviz"/>
+
+  <!-- start pointcloud_to_laserscan node -->
+  <!-- Create a manager becuase nodelets wont launch without one-->
+    <node pkg="nodelet" type="nodelet" name="pointcloud_to_laserscan_manager" output="screen" respawn="true" args="manager"/>
+
+    <!-- push pointcloud_to_laserscan nodelet into the dummny manager above-->
+    <node pkg="nodelet" type="nodelet" name="pointcloud_to_laserscan_worker" args="load pointcloud_to_laserscan/pointcloud_to_laserscan_nodelet pointcloud_to_laserscan_manager">
+
+        <remap from="cloud_in" to="/camera/depth/points"/>
+        <remap from="scan" to="/camera/scan"/>
+        <rosparam>
+            target_frame: camera_link
+            transform_tolerance: 0.01
+            min_height: 0.0
+            max_height: 0.5
+
+            angle_min: -3.14 # -M_PI
+            angle_max: 3.14 # M_PI
+            angle_increment: 0.0087 # M_PI/360.0
+            scan_time: 0.3333
+            range_min: 0.0
+            range_max: 200.0
+            use_inf: true
+
+            # Concurrency level, affects number of pointclouds queued for processing, thread number governed by nodelet manager
+            # 0 : Detect number of cores
+            # 1 : Single threaded
+            # 2->inf : Parallelism level
+            concurrency_level: 1
+        </rosparam>
+    </node>
+
 </launch>
